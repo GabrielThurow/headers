@@ -1,0 +1,249 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&display=swap');
+
+:root {
+    --cor-texto: #ffffff;
+    --cor-fundo: #1a1a1a;
+    --font-destaque: 'Syne', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--cor-fundo);
+    color: var(--cor-texto);
+    /* Especifique o caminho da imagem de fundo 
+    background-image: url('fundo/pexels-pixabay-270348.jpg');
+    */
+    /*background-size: cover; Pode ser 'cover', 'contain' ou outras opções */
+    /*background-repeat: no-repeat;  Evita a repetição da imagem */
+}
+
+header {
+    display: flex;
+    /* Ativa o flexbox no elemento pai (header) */
+    justify-content: space-between;
+    /* Distribui o espaço disponível igualmente */
+    padding: 10px 20px;
+    align-items: center;
+    background-color: #2b2a2a;
+}
+
+/* LOGO */
+
+.loader {
+    margin-left: 100px;
+}
+.glitch {
+    position: relative;
+    font-size: 25px;
+    font-weight: 700;
+    line-height: 1.2;
+    color: #fff;
+    letter-spacing: 5px;
+    z-index: 1;
+    animation: shift 1s ease-in-out infinite alternate;
+}
+
+.glitch:before,
+.glitch:after {
+    display: block;
+    content: attr(data-glitch);
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0.8;
+}
+
+.glitch:before {
+    animation: glitch 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) both infinite;
+    color: #8b00ff;
+    z-index: -1;
+}
+
+.glitch:after {
+    animation: glitch 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) reverse both infinite;
+    color: #00e571;
+    z-index: -2;
+}
+
+@keyframes glitch {
+    0% {
+        transform: translate(0);
+    }
+
+    20% {
+        transform: translate(-3px, 3px);
+    }
+
+    40% {
+        transform: translate(-3px, -3px);
+    }
+
+    60% {
+        transform: translate(3px, 3px);
+    }
+
+    80% {
+        transform: translate(3px, -3px);
+    }
+
+    to {
+        transform: translate(0);
+    }
+}
+
+@keyframes shift {
+
+    0%,
+    40%,
+    44%,
+    58%,
+    61%,
+    65%,
+    69%,
+    73%,
+    100% {
+        transform: skewX(0deg);
+    }
+
+    41% {
+        transform: skewX(10deg);
+    }
+
+    42% {
+        transform: skewX(-10deg);
+    }
+
+    59% {
+        transform: skewX(40deg) skewY(10deg);
+    }
+
+    60% {
+        transform: skewX(-40deg) skewY(-10deg);
+    }
+
+    63% {
+        transform: skewX(10deg) skewY(-5deg);
+    }
+
+    70% {
+        transform: skewX(-50deg) skewY(-20deg);
+    }
+
+    71% {
+        transform: skewX(10deg) skewY(-10deg);
+    }
+}
+
+/* FIM DA LOGO */
+
+header>h1 {
+    text-transform: uppercase;
+    /* Deixa todas as letras Maiúsculas */
+    font-family: var(--font-destaque);
+}
+
+nav ul {
+    list-style-type: none;
+    /* Remove os marcadores de lista padrão */
+    margin-right: 100px;
+    padding: 8px;
+}
+
+/* Alinhe os itens horizontalmente */
+nav li {
+    display: inline;
+    /* Isso faz com que os itens da lista fiquem em linha */
+}
+
+nav a {
+    text-decoration: none;
+    color: var(--cor-texto);
+    padding: 5px;
+    font-family: var(--font-destaque);
+    font-weight: bold;
+}
+
+nav a:hover{
+    color:  #bf7bffc7;
+    text-decoration: underline;
+    transition: 0.2s;
+}
+
+#logo {
+    margin-left: 100px;
+}
+
+section {
+    height: 50vh;
+    justify-content: center;
+    /* Centraliza horizontalmente */
+    align-items: center;
+    /* Centraliza verticalmente */
+}
+
+.container {
+    text-align: center;
+}
+
+.container>h1 {
+    margin-top: 40vh;
+    /* Altura da linha para centralizar verticalmente */
+    text-transform: uppercase;
+    /* Deixa todas as letras Maiúsculas */
+    font-family: var(--font-destaque);
+}
+
+button {
+    margin-top: 30px;
+    --glow-color: rgb(217, 176, 255);
+    --glow-spread-color: rgba(191, 123, 255, 0.781);
+    --enhanced-glow-color: rgb(231, 206, 255);
+    --btn-color: rgb(100, 61, 136);
+    border: .25em solid var(--glow-color);
+    padding: 1em 3em;
+    color: var(--glow-color);
+    font-size: 15px;
+    font-weight: bold;
+    background-color: var(--btn-color);
+    border-radius: 1em;
+    outline: none;
+    box-shadow: 0 0 1em .25em var(--glow-color),
+        0 0 4em 1em var(--glow-spread-color),
+        inset 0 0 .75em .25em var(--glow-color);
+    text-shadow: 0 0 .5em var(--glow-color);
+    position: relative;
+    transition: all 0.3s;
+}
+
+button::after {
+    pointer-events: none;
+    content: "";
+    position: absolute;
+    top: 120%;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: var(--glow-spread-color);
+    filter: blur(2em);
+    opacity: .7;
+    transform: perspective(1.5em) rotateX(35deg) scale(1, .6);
+}
+
+button:hover {
+    color: var(--btn-color);
+    background-color: var(--glow-color);
+    box-shadow: 0 0 1em .25em var(--glow-color),
+        0 0 4em 2em var(--glow-spread-color),
+        inset 0 0 .75em .25em var(--glow-color);
+}
+
+button:active {
+    box-shadow: 0 0 0.6em .25em var(--glow-color),
+        0 0 2.5em 2em var(--glow-spread-color),
+        inset 0 0 .5em .25em var(--glow-color);
+}
